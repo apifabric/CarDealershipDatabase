@@ -1,0 +1,2 @@
+Error creating database from model: December 18, 2024 18:14:22
+unexpected character after line continuation character (create_db_models.py, line 27)

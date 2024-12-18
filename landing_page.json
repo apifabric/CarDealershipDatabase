@@ -1,0 +1,116 @@
+{
+    "name": "DriveOn Motors",
+    "logo": {
+        "Type": "Logo",
+        "name": "DriveOn Motors Logo",
+        "description": "The logo features sleek automotive lines showcasing drive efficiency and style."
+    },
+    "sections": [
+        {
+            "title": "Welcome to DriveOn Motors",
+            "subtitle": "Your Ultimate Car Buying Experience",
+            "name": "Hero",
+            "label": "Home",
+            "content": "**Discover Your Dream Car**  \nDriveOn Motors brings a world-class car buying experience tailored just for you. Explore, choose, drive. Satisfaction guaranteed.",
+            "order": 1,
+            "Type": "Hero",
+            "images": [
+                {
+                    "Type": "Hero",
+                    "name": "Car Showroom",
+                    "description": "A dynamic photo of the car showroom with luxury vehicles."
+                }
+            ]
+        },
+        {
+            "title": "About Us",
+            "subtitle": "Our Mission: Excellence and Integrity",
+            "name": "About",
+            "label": "About",
+            "content": "At **DriveOn Motors**, we are committed to providing our customers with the highest quality vehicles and exceptional service. Our years of experience and dedication ensure that every customer finds the perfect car to suit their lifestyle.  \n\n**Our Promise:**\n- *Comprehensive Car Selection*: From economy to luxury, we've got it all.\n- *Customer-Centric Approach*: Your needs guide our offerings.\n- *Continuous Support*: We are here for you even after the keys are yours.  \n\nJoin us and drive with confidence.",
+            "order": 2,
+            "Type": "About",
+            "images": [
+                {
+                    "Type": "Background",
+                    "name": "Team Meeting",
+                    "description": "An image of a team meeting reflecting collaborative spirit."
+                }
+            ]
+        },
+        {
+            "title": "Explore Our Services",
+            "subtitle": "Your One-Stop Automotive Solution",
+            "name": "Services",
+            "label": "Services",
+            "content": "We offer a wide range of services designed to meet all your car needs:\n\n- **New Vehicles**: Discover the latest models from leading manufacturers.\n- **Pre-Owned Vehicles**: Quality assured, thoroughly inspected used cars.\n- **Trade-In**: Get the best value for your old vehicle, hassle-free.\n- **Financing Options**: Flexible and customized financing plans that suit your budget.\n- **Customer Support**: Ongoing support with a dedicated service team.",
+            "order": 3,
+            "Type": "Services",
+            "images": [
+                {
+                    "Type": "ItemListing",
+                    "name": "Car Range",
+                    "description": "Image showcasing a range of cars available at the dealership."
+                },
+                {
+                    "Type": "Infographic",
+                    "name": "Finance Plans",
+                    "description": "A helpful infographic detailing finance plans."
+                }
+            ]
+        },
+        {
+            "title": "Real Customers, Real Stories",
+            "subtitle": "",
+            "name": "Testimonials",
+            "label": "Testimonials",
+            "content": "Here's what our satisfied customers are saying:\n\n> **\"DriveOn made my car buying experience seamless and stress-free. Their team is incredibly helpful!\"**  \n\u2014 ***Emily R.***, Happy Customer  \n\n> **\"Amazing selection and even better service. Got the car I've always wanted at a great rate!\"**  \n\u2014 ***Michael T.***, Loyal Client",
+            "order": 4,
+            "Type": "Testimonials",
+            "images": [
+                {
+                    "Type": "Testimonial",
+                    "name": "Customer Smiling",
+                    "description": "Photo of a satisfied customer standing by their new car."
+                }
+            ]
+        },
+        {
+            "title": "Photo Gallery",
+            "subtitle": "Experience Our Collection",
+            "name": "Gallery",
+            "label": "Gallery",
+            "content": "Discover the vibrant world of DriveOn Motors through our photo gallery showcasing our extensive range of cars and happy customers celebrating their new rides.",
+            "order": 5,
+            "Type": "Gallery",
+            "images": [
+                {
+                    "Type": "Gallery",
+                    "name": "Car Gallery",
+                    "description": "An array of different cars on display."
+                },
+                {
+                    "Type": "Gallery",
+                    "name": "Customer Celebrations",
+                    "description": "Images capturing customer celebrations with their new cars."
+                }
+            ]
+        },
+        {
+            "title": "Get In Touch with Us",
+            "subtitle": "We\u2019re Here to Help",
+            "name": "Contact",
+            "label": "Contact",
+            "content": "Ready to start your car buying journey or need assistance? Contact us today!\n\n**Visit Us:**  \n1234 Drive Lane  \nAuto City, AC 56789  \n\n**Call Us:**  \n(123) 456-7890  \n\n**Email:**  \nsupport@driveonmotors.com  \n\n**Follow Us:**  \n[Facebook](#) | [Twitter](#) | [Instagram](#)",
+            "order": 6,
+            "Type": "Contact",
+            "images": [
+                {
+                    "Type": "Map",
+                    "name": "Location Map",
+                    "description": "Map showing the location of DriveOn Motors."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,143 @@
+{
+    "models": [
+        {
+            "classname": "Car",
+            "code": "class Car(Base):\\n    \\n    __tablename__ = 'car'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    make = Column(String, nullable=False)\\n    model = Column(String, nullable=False)\\n    year = Column(Integer, nullable=False)\\n    mileage = Column(Integer, nullable=True)\\n    price = Column(DECIMAL(10, 2), nullable=False)\\n    color = Column(String, nullable=True)\\n",
+            "sqlite_create": "CREATE TABLE car (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    make VARCHAR NOT NULL,\\n    model VARCHAR NOT NULL,\\n    year INTEGER NOT NULL,\\n    mileage INTEGER,\\n    price DECIMAL(10, 2) NOT NULL,\\n    color VARCHAR\\n)",
+            "description": "description: Table to store car details.",
+            "name": "car"
+        },
+        {
+            "classname": "Customer",
+            "code": "class Customer(Base):\\n    \\n    __tablename__ = 'customer'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    first_name = Column(String, nullable=False)\\n    last_name = Column(String, nullable=False)\\n    phone_number = Column(String, nullable=True)\\n    email = Column(String, nullable=True)\\n",
+            "sqlite_create": "CREATE TABLE customer (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    first_name VARCHAR NOT NULL,\\n    last_name VARCHAR NOT NULL,\\n    phone_number VARCHAR,\\n    email VARCHAR\\n)",
+            "description": "description: Table to store customer details.",
+            "name": "customer"
+        },
+        {
+            "classname": "Salesperson",
+            "code": "class Salesperson(Base):\\n    \\n    __tablename__ = 'salesperson'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    first_name = Column(String, nullable=False)\\n    last_name = Column(String, nullable=False)\\n    hire_date = Column(DateTime, nullable=True)\\n    salary = Column(DECIMAL(10, 2), nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE salesperson (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    first_name VARCHAR NOT NULL,\\n    last_name VARCHAR NOT NULL,\\n    hire_date DATETIME,\\n    salary DECIMAL(10, 2) NOT NULL\\n)",
+            "description": "description: Table to store salesperson information.",
+            "name": "salesperson"
+        },
+        {
+            "classname": "Invoice",
+            "code": "class Invoice(Base):\\n    \\n    __tablename__ = 'invoice'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    date = Column(DateTime, nullable=False)\\n    total_amount = Column(DECIMAL(10, 2), nullable=False)\\n    customer_id = Column(Integer, ForeignKey('customer.id'), nullable=False) \\n    salesperson_id = Column(Integer, ForeignKey('salesperson.id'), nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE invoice (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    date DATETIME NOT NULL,\\n    total_amount DECIMAL(10, 2) NOT NULL,\\n    customer_id INTEGER REFERENCES customer(id) NOT NULL,\\n    salesperson_id INTEGER REFERENCES salesperson(id) NOT NULL\\n)",
+            "description": "description: Table to store invoices.",
+            "name": "invoice"
+        },
+        {
+            "classname": "Inventory",
+            "code": "class Inventory(Base):\\n\\n    __tablename__ = 'inventory'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    car_id = Column(Integer, ForeignKey('car.id'), nullable=False)\\n    quantity = Column(Integer, nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE inventory (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    car_id INTEGER REFERENCES car(id) NOT NULL,\\n    quantity INTEGER NOT NULL\\n)",
+            "description": "description: Table to manage car inventory quantities.",
+            "name": "inventory"
+        },
+        {
+            "classname": "Sale",
+            "code": "class Sale(Base):\\n    \\n    __tablename__ = 'sale'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    invoice_id = Column(Integer, ForeignKey('invoice.id'), nullable=False)\\n    car_id = Column(Integer, ForeignKey('car.id'), nullable=False)\\n    sale_price = Column(DECIMAL(10, 2), nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE sale (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    invoice_id INTEGER REFERENCES invoice(id) NOT NULL,\\n    car_id INTEGER REFERENCES car(id) NOT NULL,\\n    sale_price DECIMAL(10, 2) NOT NULL\\n)",
+            "description": "description: Table to record individual sales transactions.",
+            "name": "sale"
+        },
+        {
+            "classname": "ServiceAppointment",
+            "code": "class ServiceAppointment(Base):\\n    \\n    __tablename__ = 'service_appointment'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    date = Column(DateTime, nullable=False)\\n    customer_id = Column(Integer, ForeignKey('customer.id'), nullable=False)\\n    car_id = Column(Integer, ForeignKey('car.id'), nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE service_appointment (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    date DATETIME NOT NULL,\\n    customer_id INTEGER REFERENCES customer(id) NOT NULL,\\n    car_id INTEGER REFERENCES car(id) NOT NULL\\n)",
+            "description": "description: Table to schedule and manage service appointments.",
+            "name": "service_appointment"
+        },
+        {
+            "classname": "TestDrive",
+            "code": "class TestDrive(Base):\\n    \\n    __tablename__ = 'test_drive'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    date = Column(DateTime, nullable=False)\\n    customer_id = Column(Integer, ForeignKey('customer.id'), nullable=False)\\n    car_id = Column(Integer, ForeignKey('car.id'), nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE test_drive (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    date DATETIME NOT NULL,\\n    customer_id INTEGER REFERENCES customer(id) NOT NULL,\\n    car_id INTEGER REFERENCES car(id) NOT NULL\\n)",
+            "description": "description: Table to log scheduled test drives.",
+            "name": "test_drive"
+        },
+        {
+            "classname": "Payment",
+            "code": "class Payment(Base):\\n    \\n    __tablename__ = 'payment'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    invoice_id = Column(Integer, ForeignKey('invoice.id'), nullable=False)\\n    amount = Column(DECIMAL(10, 2), nullable=False)\\n    date = Column(DateTime, nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE payment (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    invoice_id INTEGER REFERENCES invoice(id) NOT NULL,\\n    amount DECIMAL(10, 2) NOT NULL,\\n    date DATETIME NOT NULL\\n)",
+            "description": "description: Table that records payments against invoices.",
+            "name": "payment"
+        },
+        {
+            "classname": "AutoPart",
+            "code": "class AutoPart(Base):\\n    \\n    __tablename__ = 'auto_part'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    name = Column(String, nullable=False)\\n    price = Column(DECIMAL(10, 2), nullable=False)\\n    stock = Column(Integer, nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE auto_part (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    name VARCHAR NOT NULL,\\n    price DECIMAL(10, 2) NOT NULL,\\n    stock INTEGER NOT NULL\\n)",
+            "description": "description: Table storing details and stock of auto parts.",
+            "name": "auto_part"
+        },
+        {
+            "classname": "PartPurchase",
+            "code": "class PartPurchase(Base):\\n    \\n    __tablename__ = 'part_purchase'\\n\\n    id = Column(Integer, primary_key=True, autoincrement=True)\\n    auto_part_id = Column(Integer, ForeignKey('auto_part.id'), nullable=False)\\n    quantity = Column(Integer, nullable=False)\\n    date = Column(DateTime, nullable=False)\\n",
+            "sqlite_create": "CREATE TABLE part_purchase (\\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\\n    auto_part_id INTEGER REFERENCES auto_part(id) NOT NULL,\\n    quantity INTEGER NOT NULL,\\n    date DATETIME NOT NULL\\n)",
+            "description": "description: Table tracking purchases of auto parts.",
+            "name": "part_purchase"
+        }
+    ],
+    "rules": [],
+    "test_data": "Insert initial test data for all tables.",
+    "test_data_rows": [
+        {
+            "test_data_row_variable": "car1",
+            "code": "car1 = Car(make=\"Toyota\", model=\"Camry\", year=2020, mileage=10000, price=20000.00, color=\"Red\")"
+        },
+        {
+            "test_data_row_variable": "car2",
+            "code": "car2 = Car(make=\"Honda\", model=\"Civic\", year=2019, mileage=15000, price=18000.00, color=\"Blue\")"
+        },
+        {
+            "test_data_row_variable": "car3",
+            "code": "car3 = Car(make=\"Ford\", model=\"Focus\", year=2021, mileage=5000, price=22000.00, color=\"Black\")"
+        },
+        {
+            "test_data_row_variable": "car4",
+            "code": "car4 = Car(make=\"Chevrolet\", model=\"Impala\", year=2018, mileage=20000, price=17000.00, color=\"Silver\")"
+        },
+        {
+            "test_data_row_variable": "customer1",
+            "code": "customer1 = Customer(first_name=\"John\", last_name=\"Doe\", phone_number=\"555-1234\", email=\"john.doe@example.com\")"
+        },
+        {
+            "test_data_row_variable": "customer2",
+            "code": "customer2 = Customer(first_name=\"Jane\", last_name=\"Smith\", phone_number=\"555-5678\", email=\"jane.smith@example.com\")"
+        },
+        {
+            "test_data_row_variable": "customer3",
+            "code": "customer3 = Customer(first_name=\"Emily\", last_name=\"Johnson\", phone_number=\"555-8765\", email=\"emily.johnson@example.com\")"
+        },
+        {
+            "test_data_row_variable": "customer4",
+            "code": "customer4 = Customer(first_name=\"Michael\", last_name=\"Brown\", phone_number=\"555-4321\", email=\"michael.brown@example.com\")"
+        },
+        {
+            "test_data_row_variable": "salesperson1",
+            "code": "salesperson1 = Salesperson(first_name=\"Alice\", last_name=\"Williams\", hire_date=date(2020, 5, 10), salary=50000.00)"
+        },
+        {
+            "test_data_row_variable": "salesperson2",
+            "code": "salesperson2 = Salesperson(first_name=\"Thomas\", last_name=\"Taylor\", hire_date=date(2019, 4, 20), salary=55000.00)"
+        },
+        {
+            "test_data_row_variable": "salesperson3",
+            "code": "salesperson3 = Salesperson(first_name=\"Olivia\", last_name=\"Martinez\", hire_date=date(2018, 3, 5), salary=60000.00)"
+        },
+        {
+            "test_data_row_variable": "salesperson4",
+            "code": "salesperson4 = Salesperson(first_name=\"Paul\", last_name=\"Jackson\", hire_date=date(2021, 1, 25), salary=45000.00)"
+        },
+        {
+            "test_data_row_variable": "invoice1",
+            "code": "invoice1 = Invoice(date=date(2023, 10, 12), total_amount=20000.00, customer_id=customer1.id, salesperson_id=salesperson1.id)"
+        },
+        {
+            "test_data_row_variable": "invoice2",
+            "code": "invoice2 = Invoice(date=date(2023, 10, 13), total_amount=18000.00, customer_id=customer2.id, salesperson_id=salesperson2.id)"
+        }
+    ],
+    "test_data_sqlite": "INSERT INTO car (make, model, year, mileage, price, color) VALUES ('Toyota', 'Camry', 2020, 10000, 20000.00, 'Red');\\nINSERT INTO car (make, model, year, mileage, price, color) VALUES ('Honda', 'Civic', 2019, 15000, 18000.00, 'Blue');\\nINSERT INTO car (make, model, year, mileage, price, color) VALUES ('Ford', 'Focus', 2021, 5000, 22000.00, 'Black');\\nINSERT INTO car (make, model, year, mileage, price, color) VALUES ('Chevrolet', 'Impala', 2018, 20000, 17000.00, 'Silver');\\nINSERT INTO customer (first_name, last_name, phone_number, email) VALUES ('John', 'Doe', '555-1234', 'john.doe@example.com');",
+    "name": "CarDealershipDatabase"
+}
